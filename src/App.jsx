@@ -16,14 +16,14 @@ const C = {
 };
 
 const css = `
-  @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Figtree:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: ${C.bg}; color: ${C.text}; font-family: 'Figtree', sans-serif; -webkit-font-smoothing: antialiased; }
-  h1,h2,h3,h4,h5,h6 { font-family: 'Syne', sans-serif; }
+  body { background: ${C.bg}; color: ${C.text}; font-family: 'DM Sans', sans-serif; -webkit-font-smoothing: antialiased; }
+  h1,h2,h3,h4,h5,h6 { font-family: 'Space Grotesk', sans-serif; }
   a { color: inherit; text-decoration: none; }
   html { scroll-behavior: smooth; }
   ::selection { background: rgba(26,86,255,.35); }
-  input, textarea, select { font-family: 'Figtree', sans-serif; }
+  input, textarea, select { font-family: 'DM Sans', sans-serif; }
 `;
 
 /* ─── Shared ─── */
@@ -34,19 +34,19 @@ const Wrap = ({ children, style }) => (
 );
 
 const Eyebrow = ({ children }) => (
-  <p style={{ fontFamily: "Syne, sans-serif", fontSize: ".72rem", fontWeight: 700, letterSpacing: ".18em", textTransform: "uppercase", color: C.cyan, marginBottom: "1rem" }}>
+  <p style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: ".72rem", fontWeight: 700, letterSpacing: ".18em", textTransform: "uppercase", color: C.cyan, marginBottom: "1rem" }}>
     {children}
   </p>
 );
 
 const Tag = ({ children, color = C.blue }) => (
-  <span style={{ display: "inline-block", padding: ".3rem .8rem", borderRadius: 4, border: `1px solid ${color}44`, background: `${color}12`, fontSize: ".72rem", fontFamily: "Syne, sans-serif", fontWeight: 600, color: `${color}`, letterSpacing: ".08em" }}>
+  <span style={{ display: "inline-block", padding: ".3rem .8rem", borderRadius: 4, border: `1px solid ${color}44`, background: `${color}12`, fontSize: ".72rem", fontFamily: "Space Grotesk, sans-serif", fontWeight: 600, color: `${color}`, letterSpacing: ".08em" }}>
     {children}
   </span>
 );
 
 const Btn = ({ children, primary, onClick, style }) => (
-  <button onClick={onClick} style={{ display: "inline-flex", alignItems: "center", gap: ".4rem", padding: ".72rem 1.6rem", borderRadius: 6, border: primary ? "none" : `1px solid ${C.border}`, background: primary ? C.blue : "transparent", color: C.text, fontFamily: "Syne, sans-serif", fontSize: ".875rem", fontWeight: 600, cursor: "pointer", transition: "all .2s", letterSpacing: ".03em", ...style }}>
+  <button onClick={onClick} style={{ display: "inline-flex", alignItems: "center", gap: ".4rem", padding: ".72rem 1.6rem", borderRadius: 6, border: primary ? "none" : `1px solid ${C.border}`, background: primary ? C.blue : "transparent", color: C.text, fontFamily: "Space Grotesk, sans-serif", fontSize: ".925rem", fontWeight: 600, cursor: "pointer", transition: "all .2s", letterSpacing: ".03em", ...style }}>
     {children}
   </button>
 );
@@ -77,10 +77,10 @@ function Nav({ current, navigate }) {
   return (
     <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 100, borderBottom: `1px solid ${scrolled ? C.border : "transparent"}`, backdropFilter: scrolled ? "blur(16px)" : "none", background: scrolled ? "rgba(6,9,26,.88)" : "transparent", transition: "all .3s" }}>
       <Wrap style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "1rem 2rem" }}>
-        <img src={LOGO} alt="expandev" style={{ height: 26, cursor: "pointer" }} onClick={() => navigate("home")} />
+        <img src={LOGO} alt="expandev" style={{ height: 40, cursor: "pointer" }} onClick={() => navigate("home")} />
         <div style={{ display: "flex", gap: "2rem" }}>
           {PAGES.filter(p => p.id !== "home").map(p => (
-            <button key={p.id} onClick={() => navigate(p.id)} style={{ background: "none", border: "none", color: current === p.id ? C.text : C.muted, fontFamily: "Syne, sans-serif", fontSize: ".875rem", fontWeight: 500, cursor: "pointer", transition: "color .2s" }}>
+            <button key={p.id} onClick={() => navigate(p.id)} style={{ background: "none", border: "none", color: current === p.id ? C.text : "#94a3b8", fontFamily: "Space Grotesk, sans-serif", fontSize: ".925rem", fontWeight: 500, cursor: "pointer", transition: "color .2s" }}>
               {p.label}
             </button>
           ))}
@@ -112,7 +112,7 @@ function HomePage({ navigate }) {
                 <span style={{ fontStyle: "italic", background: "linear-gradient(135deg,#1a56ff,#00d4ff)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Engineering</span> quality.<br />
                 Auditable governance.
               </h1>
-              <p style={{ fontSize: "1rem", color: "rgba(200,215,255,.62)", marginBottom: "2rem", fontWeight: 300, lineHeight: 1.8 }}>
+              <p style={{ fontSize: "1rem", color: "rgba(200,215,255,.72)", marginBottom: "2rem", fontWeight: 300, lineHeight: 1.8 }}>
                 Enterprise-grade software, from briefing to release. expandev governs how AI builds your software — every line traceable, compliant, and owned by humans.
               </p>
               <div style={{ display: "flex", gap: ".875rem", flexWrap: "wrap" }}>
@@ -130,10 +130,10 @@ function HomePage({ navigate }) {
               ].map(fw => (
                 <div key={fw.label} style={{ background: C.surface, border: `1px solid ${C.border}`, borderLeft: `3px solid ${fw.color}`, borderRadius: 8, padding: "1rem 1.25rem", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                   <div>
-                    <p style={{ fontFamily: "Syne, sans-serif", fontWeight: 700, fontSize: ".95rem", marginBottom: ".2rem" }}>{fw.label}</p>
-                    <p style={{ fontSize: ".78rem", color: C.muted }}>{fw.sub}</p>
+                    <p style={{ fontFamily: "Space Grotesk, sans-serif", fontWeight: 700, fontSize: ".95rem", marginBottom: ".2rem" }}>{fw.label}</p>
+                    <p style={{ fontSize: ".78rem", color: "#94a3b8" }}>{fw.sub}</p>
                   </div>
-                  <span style={{ fontSize: ".7rem", color: fw.color, fontFamily: "Syne, sans-serif", fontWeight: 700, letterSpacing: ".08em" }}>ALIGNED</span>
+                  <span style={{ fontSize: ".7rem", color: fw.color, fontFamily: "Space Grotesk, sans-serif", fontWeight: 700, letterSpacing: ".08em" }}>ALIGNED</span>
                 </div>
               ))}
             </div>
@@ -147,21 +147,21 @@ function HomePage({ navigate }) {
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "4rem", alignItems: "center" }}>
             <div>
               <Eyebrow>The Generative AI Paradox</Eyebrow>
-              <p style={{ fontFamily: "Syne, sans-serif", fontSize: "1.3rem", fontWeight: 700, lineHeight: 1.35, marginBottom: "1.25rem" }}>
-                <em style={{ color: C.muted, fontStyle: "italic" }}>Code is generated in seconds. Architectures emerge from prompts.</em>{" "}
+              <p style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "1.3rem", fontWeight: 700, lineHeight: 1.35, marginBottom: "1.25rem" }}>
+                <em style={{ color: "#94a3b8", fontStyle: "italic" }}>Code is generated in seconds. Architectures emerge from prompts.</em>{" "}
                 <strong style={{ color: C.text }}>AI has changed how software is built — but not who is responsible for it.</strong>
               </p>
-              <p style={{ fontSize: ".9rem", color: C.muted, lineHeight: 1.75 }}>When AI generates code without boundaries, decisions become implicit, logic becomes untraceable, and organizational risk compounds silently. Speed without governance isn't productivity — it's compounding risk.</p>
+              <p style={{ fontSize: ".9rem", color: "#94a3b8", lineHeight: 1.75 }}>When AI generates code without boundaries, decisions become implicit, logic becomes untraceable, and organizational risk compounds silently. Speed without governance isn't productivity — it's compounding risk.</p>
             </div>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1.5rem" }}>
               {[
                 { label: "Visible gains", icon: "✓", color: "#22c55e", items: ["Implementation speed", "Democratized development", "Productivity on repetitive tasks"] },
-                { label: "Blind spots", icon: "⊘", color: C.muted, items: ["Fragmented tooling", "Speed asymmetry", "Hidden human-AI boundary"] },
+                { label: "Blind spots", icon: "⊘", color: "#94a3b8", items: ["Fragmented tooling", "Speed asymmetry", "Hidden human-AI boundary"] },
               ].map(col => (
                 <div key={col.label}>
-                  <p style={{ fontSize: ".7rem", fontFamily: "Syne, sans-serif", fontWeight: 700, letterSpacing: ".12em", textTransform: "uppercase", color: col.color, marginBottom: ".75rem" }}>{col.label}</p>
+                  <p style={{ fontSize: ".7rem", fontFamily: "Space Grotesk, sans-serif", fontWeight: 700, letterSpacing: ".12em", textTransform: "uppercase", color: col.color, marginBottom: ".75rem" }}>{col.label}</p>
                   {col.items.map(item => (
-                    <div key={item} style={{ display: "flex", gap: ".5rem", alignItems: "flex-start", padding: ".4rem 0", borderBottom: `1px solid ${C.border}`, fontSize: ".875rem", color: "rgba(200,215,255,.75)" }}>
+                    <div key={item} style={{ display: "flex", gap: ".5rem", alignItems: "flex-start", padding: ".4rem 0", borderBottom: `1px solid ${C.border}`, fontSize: ".925rem", color: "rgba(200,215,255,.75)" }}>
                       <span style={{ color: col.color, flexShrink: 0 }}>{col.icon}</span>{item}
                     </div>
                   ))}
@@ -191,7 +191,7 @@ function HomePage({ navigate }) {
               <Card key={card.title}>
                 <div style={{ width: 44, height: 44, borderRadius: 10, background: card.bg, display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.3rem", marginBottom: "1.25rem" }}>{card.icon}</div>
                 <h3 style={{ fontSize: "1rem", fontWeight: 700, marginBottom: ".5rem" }}>{card.title}</h3>
-                <p style={{ fontSize: ".85rem", color: C.muted, lineHeight: 1.65 }}>{card.desc}</p>
+                <p style={{ fontSize: ".9rem", color: "#94a3b8", lineHeight: 1.7 }}>{card.desc}</p>
               </Card>
             ))}
           </div>
@@ -204,7 +204,7 @@ function HomePage({ navigate }) {
           <div style={{ textAlign: "center", marginBottom: "4rem" }}>
             <Eyebrow>How it works</Eyebrow>
             <h2 style={{ fontSize: "clamp(1.5rem,2.5vw,2.2rem)", fontWeight: 800, letterSpacing: "-.02em", marginBottom: ".75rem" }}>Four stages. One governed pipeline.</h2>
-            <p style={{ color: "rgba(200,215,255,.6)", fontSize: "1rem", maxWidth: 520, margin: "0 auto" }}>From business intent to auditable source code — every step is structured, traced, and human-owned.</p>
+            <p style={{ color: "rgba(200,215,255,.72)", fontSize: "1rem", maxWidth: 520, margin: "0 auto" }}>From business intent to auditable source code — every step is structured, traced, and human-owned.</p>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: "1.5rem", position: "relative" }}>
             <div style={{ position: "absolute", top: "2.75rem", left: "calc(12.5% + 1.75rem)", right: "calc(12.5% + 1.75rem)", height: 1, background: `linear-gradient(90deg,${C.blue},${C.cyan})` }} />
@@ -215,11 +215,11 @@ function HomePage({ navigate }) {
               { n: "4", title: "Trace", desc: "Decisions, requirements, and deliverables stay linked, auditable, and explainable — permanently.", bg: "#15803d" },
             ].map(step => (
               <div key={step.n} style={{ textAlign: "center" }}>
-                <div style={{ width: "3.5rem", height: "3.5rem", borderRadius: "50%", background: step.bg, display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "Syne, sans-serif", fontSize: "1.15rem", fontWeight: 800, margin: "0 auto 1.25rem", position: "relative", zIndex: 1, boxShadow: `0 0 0 6px ${step.bg}22` }}>
+                <div style={{ width: "3.5rem", height: "3.5rem", borderRadius: "50%", background: step.bg, display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "Space Grotesk, sans-serif", fontSize: "1.15rem", fontWeight: 800, margin: "0 auto 1.25rem", position: "relative", zIndex: 1, boxShadow: `0 0 0 6px ${step.bg}22` }}>
                   {step.n}
                 </div>
                 <h3 style={{ fontSize: "1rem", fontWeight: 700, marginBottom: ".5rem" }}>{step.title}</h3>
-                <p style={{ fontSize: ".825rem", color: C.muted, lineHeight: 1.65 }}>{step.desc}</p>
+                <p style={{ fontSize: ".9rem", color: "#94a3b8", lineHeight: 1.7 }}>{step.desc}</p>
               </div>
             ))}
           </div>
@@ -231,7 +231,7 @@ function HomePage({ navigate }) {
         <Wrap>
           <div style={{ background: `linear-gradient(135deg, rgba(26,86,255,.15), rgba(0,212,255,.08))`, border: `1px solid rgba(26,86,255,.25)`, borderRadius: 20, padding: "4rem", textAlign: "center" }}>
             <h2 style={{ fontSize: "clamp(1.5rem,2.3vw,2.1rem)", fontWeight: 800, letterSpacing: "-.02em", marginBottom: "1rem" }}>Ready to govern your AI development?</h2>
-            <p style={{ color: "rgba(200,215,255,.6)", fontSize: "1rem", marginBottom: "2rem", maxWidth: 480, margin: "0 auto 2rem" }}>Join engineering teams building compliant, auditable software with expandev.</p>
+            <p style={{ color: "rgba(200,215,255,.72)", fontSize: "1rem", marginBottom: "2rem", maxWidth: 480, margin: "0 auto 2rem" }}>Join engineering teams building compliant, auditable software with expandev.</p>
             <div style={{ display: "flex", gap: "1rem", justifyContent: "center" }}>
               <Btn primary onClick={() => navigate("contact")}>Book a demo</Btn>
               <Btn onClick={() => navigate("pricing")}>See pricing</Btn>
@@ -260,7 +260,7 @@ function PlatformPage({ navigate }) {
         <Wrap>
           <Eyebrow>Platform</Eyebrow>
           <h1 style={{ fontSize: "clamp(1.6rem,2.5vw,2.4rem)", fontWeight: 800, letterSpacing: "-.02em", marginBottom: "1rem", maxWidth: 700 }}>Six modules. Full governed SDLC.</h1>
-          <p style={{ fontSize: "1.05rem", color: "rgba(200,215,255,.6)", maxWidth: 600, fontWeight: 300, lineHeight: 1.75 }}>Every plan ships the complete governed software development lifecycle. Governance is never tier-gated — what changes between plans is DVU volume, not governance quality.</p>
+          <p style={{ fontSize: "1.05rem", color: "rgba(200,215,255,.72)", maxWidth: 600, fontWeight: 300, lineHeight: 1.75 }}>Every plan ships the complete governed software development lifecycle. Governance is never tier-gated — what changes between plans is DVU volume, not governance quality.</p>
         </Wrap>
       </section>
       <section style={{ padding: "5rem 0" }}>
@@ -269,9 +269,9 @@ function PlatformPage({ navigate }) {
             {caps.map(cap => (
               <div key={cap.tag} style={{ background: C.surface, border: `1px solid ${C.border}`, borderRadius: 14, padding: "2rem", transition: "border-color .25s" }}>
                 <div style={{ width: 48, height: 48, borderRadius: 10, background: cap.color, display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.3rem", marginBottom: "1.25rem" }}>{cap.icon}</div>
-                <p style={{ fontSize: ".7rem", fontFamily: "Syne, sans-serif", fontWeight: 700, letterSpacing: ".1em", textTransform: "uppercase", color: C.cyan, marginBottom: ".5rem" }}>{cap.tag}</p>
+                <p style={{ fontSize: ".7rem", fontFamily: "Space Grotesk, sans-serif", fontWeight: 700, letterSpacing: ".1em", textTransform: "uppercase", color: C.cyan, marginBottom: ".5rem" }}>{cap.tag}</p>
                 <h3 style={{ fontSize: ".975rem", fontWeight: 700, marginBottom: ".6rem", lineHeight: 1.35 }}>{cap.title}</h3>
-                <p style={{ fontSize: ".85rem", color: C.muted, lineHeight: 1.7 }}>{cap.desc}</p>
+                <p style={{ fontSize: ".9rem", color: "#94a3b8", lineHeight: 1.7 }}>{cap.desc}</p>
               </div>
             ))}
           </div>
@@ -288,7 +288,7 @@ function PlatformPage({ navigate }) {
           <div style={{ background: C.bg, borderRadius: 12, overflow: "hidden", border: `1px solid ${C.border}` }}>
             <div style={{ display: "grid", gridTemplateColumns: "2fr 1.5fr 1.5fr", background: C.surface2 }}>
               {["Capability", "Code assistants / prompt-to-code", "expandev"].map((h, i) => (
-                <div key={h} style={{ padding: "1rem 1.5rem", fontFamily: "Syne, sans-serif", fontSize: ".8rem", fontWeight: 700, color: i === 2 ? "#fff" : C.muted, background: i === 2 ? C.blue : "transparent", textAlign: i === 2 ? "center" : "left" }}>{h}</div>
+                <div key={h} style={{ padding: "1rem 1.5rem", fontFamily: "Space Grotesk, sans-serif", fontSize: ".8rem", fontWeight: 700, color: i === 2 ? "#fff" : "#94a3b8", background: i === 2 ? C.blue : "transparent", textAlign: i === 2 ? "center" : "left" }}>{h}</div>
               ))}
             </div>
             {[
@@ -302,13 +302,13 @@ function PlatformPage({ navigate }) {
               ["Vendor lock-in", "Cloud provider dependent", "✓ Fully vendor-agnostic"],
             ].map(([cap, code, exp], i) => (
               <div key={cap} style={{ display: "grid", gridTemplateColumns: "2fr 1.5fr 1.5fr", borderTop: `1px solid ${C.border}`, background: i % 2 === 0 ? "rgba(255,255,255,.012)" : "transparent" }}>
-                <div style={{ padding: "1rem 1.5rem", fontWeight: 600, fontSize: ".875rem" }}>{cap}</div>
-                <div style={{ padding: "1rem 1.5rem", color: C.muted, fontSize: ".875rem" }}>{code}</div>
-                <div style={{ padding: "1rem 1.5rem", color: exp.startsWith("✓") ? "#22c55e" : "#6b7280", fontSize: ".875rem", textAlign: "center", fontWeight: exp.startsWith("✓") ? 600 : 400 }}>{exp}</div>
+                <div style={{ padding: "1rem 1.5rem", fontWeight: 600, fontSize: ".925rem" }}>{cap}</div>
+                <div style={{ padding: "1rem 1.5rem", color: "#94a3b8", fontSize: ".925rem" }}>{code}</div>
+                <div style={{ padding: "1rem 1.5rem", color: exp.startsWith("✓") ? "#22c55e" : "#6b7280", fontSize: ".925rem", textAlign: "center", fontWeight: exp.startsWith("✓") ? 600 : 400 }}>{exp}</div>
               </div>
             ))}
           </div>
-          <p style={{ textAlign: "center", marginTop: "1.5rem", fontSize: ".875rem", color: C.muted }}>Already using GitHub Copilot, AWS Kiro, or IBM Bob? <strong style={{ color: C.blue }}>expandev is the governance layer those tools don't provide.</strong></p>
+          <p style={{ textAlign: "center", marginTop: "1.5rem", fontSize: ".925rem", color: "#94a3b8" }}>Already using GitHub Copilot, AWS Kiro, or IBM Bob? <strong style={{ color: C.blue }}>expandev is the governance layer those tools don't provide.</strong></p>
         </Wrap>
       </section>
     </div>
@@ -331,7 +331,7 @@ function GovernancePage() {
         <Wrap>
           <Eyebrow>Governance</Eyebrow>
           <h1 style={{ fontSize: "clamp(1.6rem,2.5vw,2.4rem)", fontWeight: 800, letterSpacing: "-.02em", marginBottom: "1rem", maxWidth: 700 }}>Aligned with the global AI governance movement.</h1>
-          <p style={{ fontSize: "1.05rem", color: "rgba(200,215,255,.6)", maxWidth: 580, fontWeight: 300, lineHeight: 1.75 }}>expandev implements the GAISD principles and natively aligns with the frameworks that define AI accountability across every major regulatory market.</p>
+          <p style={{ fontSize: "1.05rem", color: "rgba(200,215,255,.72)", maxWidth: 580, fontWeight: 300, lineHeight: 1.75 }}>expandev implements the GAISD principles and natively aligns with the frameworks that define AI accountability across every major regulatory market.</p>
         </Wrap>
       </section>
 
@@ -339,8 +339,8 @@ function GovernancePage() {
       <section style={{ padding: "5rem 0" }}>
         <Wrap>
           <div style={{ background: "rgba(26,86,255,.07)", border: "1px solid rgba(26,86,255,.22)", borderRadius: 20, padding: "3.5rem", textAlign: "center", marginBottom: "3.5rem" }}>
-            <div style={{ fontSize: "5rem", fontFamily: "Syne, sans-serif", fontWeight: 800, letterSpacing: "-.04em", background: "linear-gradient(135deg,#fff,rgba(255,255,255,.35))", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", lineHeight: 1 }}>GAISD</div>
-            <p style={{ color: "rgba(200,215,255,.55)", marginTop: ".5rem", fontSize: "1rem", fontWeight: 300 }}>Governed AI Software Development</p>
+            <div style={{ fontSize: "5rem", fontFamily: "Space Grotesk, sans-serif", fontWeight: 800, letterSpacing: "-.04em", background: "linear-gradient(135deg,#fff,rgba(255,255,255,.35))", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", lineHeight: 1 }}>GAISD</div>
+            <p style={{ color: "rgba(200,215,255,.65)", marginTop: ".5rem", fontSize: "1rem", fontWeight: 300 }}>Governed AI Software Development</p>
             <p style={{ color: "rgba(200,215,255,.8)", marginTop: "1.5rem", fontStyle: "italic", fontSize: "1.05rem" }}>"Defines how software gets built when AI is in the loop."</p>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "1.25rem" }}>
@@ -351,8 +351,8 @@ function GovernancePage() {
             ].map(fw => (
               <div key={fw.title} style={{ background: C.surface, border: `1px solid ${C.border}`, borderLeft: `3px solid ${fw.accent}`, borderRadius: 10, padding: "1.75rem" }}>
                 <h3 style={{ fontSize: "1.05rem", fontWeight: 700, marginBottom: ".25rem" }}>{fw.title}</h3>
-                <p style={{ fontSize: ".75rem", color: fw.accent, fontFamily: "Syne, sans-serif", fontWeight: 600, letterSpacing: ".08em", marginBottom: ".75rem", textTransform: "uppercase" }}>{fw.sub}</p>
-                <p style={{ fontSize: ".875rem", color: C.muted, lineHeight: 1.65 }}>{fw.desc}</p>
+                <p style={{ fontSize: ".75rem", color: fw.accent, fontFamily: "Space Grotesk, sans-serif", fontWeight: 600, letterSpacing: ".08em", marginBottom: ".75rem", textTransform: "uppercase" }}>{fw.sub}</p>
+                <p style={{ fontSize: ".925rem", color: "#94a3b8", lineHeight: 1.7 }}>{fw.desc}</p>
               </div>
             ))}
           </div>
@@ -369,10 +369,10 @@ function GovernancePage() {
           <div style={{ maxWidth: 780, margin: "0 auto" }}>
             {principles.map((p, i) => (
               <div key={p.n} style={{ display: "grid", gridTemplateColumns: "3rem 1fr", gap: "1.5rem", padding: "1.75rem 0", borderBottom: i < 4 ? `1px solid ${C.border}` : "none", alignItems: "start" }}>
-                <div style={{ fontFamily: "Syne, sans-serif", fontSize: "2rem", fontWeight: 800, color: "rgba(26,86,255,.25)", lineHeight: 1 }}>{p.n}</div>
+                <div style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "2rem", fontWeight: 800, color: "rgba(26,86,255,.25)", lineHeight: 1 }}>{p.n}</div>
                 <div>
                   <h3 style={{ fontSize: "1.05rem", fontWeight: 700, marginBottom: ".4rem" }}>{p.title}</h3>
-                  <p style={{ fontSize: ".875rem", color: C.muted, lineHeight: 1.7 }}>{p.desc}</p>
+                  <p style={{ fontSize: ".925rem", color: "#94a3b8", lineHeight: 1.7 }}>{p.desc}</p>
                 </div>
               </div>
             ))}
@@ -397,7 +397,7 @@ function PricingPage({ navigate }) {
         <Wrap>
           <Eyebrow>Pricing</Eyebrow>
           <h1 style={{ fontSize: "clamp(1.6rem,2.5vw,2.4rem)", fontWeight: 800, letterSpacing: "-.02em", marginBottom: "1rem", maxWidth: 640 }}>A fixed plan, plus exactly what you use.</h1>
-          <p style={{ fontSize: "1.05rem", color: "rgba(200,215,255,.6)", maxWidth: 580, fontWeight: 300, lineHeight: 1.75 }}>Every plan pairs a predictable monthly fee with a bundle of Dev Units (DVUs). Governance is never tier-gated — every plan ships the full governed SDLC.</p>
+          <p style={{ fontSize: "1.05rem", color: "rgba(200,215,255,.72)", maxWidth: 580, fontWeight: 300, lineHeight: 1.75 }}>Every plan pairs a predictable monthly fee with a bundle of Dev Units (DVUs). Governance is never tier-gated — every plan ships the full governed SDLC.</p>
         </Wrap>
       </section>
 
@@ -406,7 +406,7 @@ function PricingPage({ navigate }) {
           {/* DVU explain */}
           <div style={{ background: C.surface, border: `1px solid ${C.border}`, borderRadius: 12, padding: "2rem", maxWidth: 680, margin: "0 auto 4rem", textAlign: "center" }}>
             <h3 style={{ fontSize: "1.1rem", fontWeight: 700, marginBottom: ".5rem" }}>What's a DVU?</h3>
-            <p style={{ fontSize: ".9rem", color: C.muted, lineHeight: 1.75 }}>A Dev Unit (DVU) is expandev's unit of consumption. Every operation the platform runs — generating code, structuring a specification, running an architectural analysis — consumes a measured number of DVUs. The larger the plan, the lower your effective cost per DVU.</p>
+            <p style={{ fontSize: ".9rem", color: "#94a3b8", lineHeight: 1.75 }}>A Dev Unit (DVU) is expandev's unit of consumption. Every operation the platform runs — generating code, structuring a specification, running an architectural analysis — consumes a measured number of DVUs. The larger the plan, the lower your effective cost per DVU.</p>
           </div>
 
           {/* Tiers */}
@@ -414,26 +414,26 @@ function PricingPage({ navigate }) {
             {tiers.map(tier => (
               <div key={tier.id} style={{ background: C.surface, border: `1px solid ${tier.featured ? C.blue : C.border}`, borderRadius: 14, padding: "2rem", position: "relative", ...(tier.featured ? { background: "rgba(26,86,255,.07)" } : {}) }}>
                 {tier.featured && (
-                  <div style={{ position: "absolute", top: -1, left: "50%", transform: "translateX(-50%)", background: C.blue, color: "#fff", fontSize: ".68rem", fontFamily: "Syne, sans-serif", fontWeight: 700, letterSpacing: ".1em", textTransform: "uppercase", padding: ".25rem .9rem", borderRadius: "0 0 6px 6px" }}>Most Popular</div>
+                  <div style={{ position: "absolute", top: -1, left: "50%", transform: "translateX(-50%)", background: C.blue, color: "#fff", fontSize: ".68rem", fontFamily: "Space Grotesk, sans-serif", fontWeight: 700, letterSpacing: ".1em", textTransform: "uppercase", padding: ".25rem .9rem", borderRadius: "0 0 6px 6px" }}>Most Popular</div>
                 )}
-                <p style={{ fontSize: ".7rem", fontFamily: "Syne, sans-serif", fontWeight: 700, letterSpacing: ".12em", textTransform: "uppercase", color: C.cyan, marginBottom: ".75rem" }}>{tier.label}</p>
-                <p style={{ fontSize: ".825rem", color: C.muted, marginBottom: "1.5rem", lineHeight: 1.5, minHeight: "2.5rem" }}>{tier.best}</p>
-                <div style={{ fontFamily: "Syne, sans-serif", fontSize: "2.5rem", fontWeight: 800, lineHeight: 1, marginBottom: ".25rem" }}>{tier.price}<span style={{ fontSize: "1rem", fontWeight: 400, color: C.muted }}>/mo</span></div>
-                <p style={{ fontSize: ".825rem", color: C.muted, marginBottom: ".25rem" }}>{tier.dvu}</p>
-                <p style={{ fontSize: ".825rem", color: C.muted, marginBottom: "1.75rem" }}>{tier.overage}</p>
+                <p style={{ fontSize: ".7rem", fontFamily: "Space Grotesk, sans-serif", fontWeight: 700, letterSpacing: ".12em", textTransform: "uppercase", color: C.cyan, marginBottom: ".75rem" }}>{tier.label}</p>
+                <p style={{ fontSize: ".9rem", color: "#94a3b8", marginBottom: "1.5rem", lineHeight: 1.5, minHeight: "2.5rem" }}>{tier.best}</p>
+                <div style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "2.5rem", fontWeight: 800, lineHeight: 1, marginBottom: ".25rem" }}>{tier.price}<span style={{ fontSize: "1rem", fontWeight: 400, color: "#94a3b8" }}>/mo</span></div>
+                <p style={{ fontSize: ".9rem", color: "#94a3b8", marginBottom: ".25rem" }}>{tier.dvu}</p>
+                <p style={{ fontSize: ".9rem", color: "#94a3b8", marginBottom: "1.75rem" }}>{tier.overage}</p>
                 <div style={{ height: 1, background: C.border, margin: "0 0 1.25rem" }} />
                 {tier.features.map(f => (
-                  <div key={f} style={{ display: "flex", gap: ".6rem", alignItems: "center", fontSize: ".875rem", color: "rgba(200,215,255,.78)", padding: ".3rem 0" }}>
+                  <div key={f} style={{ display: "flex", gap: ".6rem", alignItems: "center", fontSize: ".925rem", color: "rgba(200,215,255,.78)", padding: ".3rem 0" }}>
                     <span style={{ color: "#22c55e", fontWeight: 700, flexShrink: 0 }}>✓</span>{f}
                   </div>
                 ))}
-                <button onClick={() => navigate("contact")} style={{ display: "block", width: "100%", marginTop: "1.5rem", padding: ".75rem", borderRadius: 6, border: tier.featured ? "none" : `1px solid ${C.border}`, background: tier.featured ? C.blue : "transparent", color: C.text, fontFamily: "Syne, sans-serif", fontSize: ".875rem", fontWeight: 600, cursor: "pointer", transition: "all .2s" }}>
+                <button onClick={() => navigate("contact")} style={{ display: "block", width: "100%", marginTop: "1.5rem", padding: ".75rem", borderRadius: 6, border: tier.featured ? "none" : `1px solid ${C.border}`, background: tier.featured ? C.blue : "transparent", color: C.text, fontFamily: "Space Grotesk, sans-serif", fontSize: ".925rem", fontWeight: 600, cursor: "pointer", transition: "all .2s" }}>
                   Talk to sales
                 </button>
               </div>
             ))}
           </div>
-          <p style={{ textAlign: "center", marginTop: "2rem", fontSize: ".825rem", color: C.muted, fontStyle: "italic" }}>Governance is never tier-gated. All plans include the full governed SDLC. Plans differ on DVU volume and price, not governance quality.</p>
+          <p style={{ textAlign: "center", marginTop: "2rem", fontSize: ".9rem", color: "#94a3b8", fontStyle: "italic" }}>Governance is never tier-gated. All plans include the full governed SDLC. Plans differ on DVU volume and price, not governance quality.</p>
         </Wrap>
       </section>
     </div>
@@ -445,11 +445,11 @@ function ContactPage() {
   const [sent, setSent] = useState(false);
   const field = (label, children) => (
     <div>
-      <label style={{ display: "block", fontSize: ".78rem", fontFamily: "Syne, sans-serif", fontWeight: 600, color: C.muted, marginBottom: ".4rem", letterSpacing: ".06em", textTransform: "uppercase" }}>{label}</label>
+      <label style={{ display: "block", fontSize: ".78rem", fontFamily: "Space Grotesk, sans-serif", fontWeight: 600, color: "#94a3b8", marginBottom: ".4rem", letterSpacing: ".06em", textTransform: "uppercase" }}>{label}</label>
       {children}
     </div>
   );
-  const inp = { width: "100%", background: C.surface, border: `1px solid ${C.border}`, borderRadius: 7, padding: ".75rem 1rem", color: C.text, fontSize: ".9rem", outline: "none", fontFamily: "Figtree, sans-serif" };
+  const inp = { width: "100%", background: C.surface, border: `1px solid ${C.border}`, borderRadius: 7, padding: ".75rem 1rem", color: C.text, fontSize: ".9rem", outline: "none", fontFamily: "DM Sans, sans-serif" };
 
   return (
     <div style={{ paddingTop: "5rem" }}>
@@ -457,7 +457,7 @@ function ContactPage() {
         <Wrap>
           <Eyebrow>Get in touch</Eyebrow>
           <h1 style={{ fontSize: "clamp(1.6rem,2.5vw,2.4rem)", fontWeight: 800, letterSpacing: "-.02em", marginBottom: "1rem", maxWidth: 640 }}>Ready to govern your AI development?</h1>
-          <p style={{ fontSize: "1.05rem", color: "rgba(200,215,255,.6)", maxWidth: 540, fontWeight: 300, lineHeight: 1.75 }}>Tell us about your team and we'll find the right plan together. We typically respond within one business day.</p>
+          <p style={{ fontSize: "1.05rem", color: "rgba(200,215,255,.72)", maxWidth: 540, fontWeight: 300, lineHeight: 1.75 }}>Tell us about your team and we'll find the right plan together. We typically respond within one business day.</p>
         </Wrap>
       </section>
 
@@ -469,7 +469,7 @@ function ContactPage() {
                 <div style={{ background: "rgba(34,197,94,.1)", border: "1px solid rgba(34,197,94,.3)", borderRadius: 12, padding: "2.5rem", textAlign: "center" }}>
                   <div style={{ fontSize: "2.5rem", marginBottom: "1rem" }}>✓</div>
                   <h3 style={{ fontWeight: 700, marginBottom: ".5rem" }}>Message sent!</h3>
-                  <p style={{ color: C.muted, fontSize: ".9rem" }}>We'll be in touch within one business day.</p>
+                  <p style={{ color: "#94a3b8", fontSize: ".9rem" }}>We'll be in touch within one business day.</p>
                 </div>
               ) : (
                 <div style={{ display: "grid", gap: "1rem" }}>
@@ -488,10 +488,10 @@ function ContactPage() {
                   {field("What brings you here?",
                     <textarea placeholder="Tell us about your current challenge with AI-assisted development, compliance requirements, or what you're trying to solve..." style={{ ...inp, minHeight: 110, resize: "vertical" }} />
                   )}
-                  <button onClick={() => setSent(true)} style={{ padding: ".875rem", background: C.blue, color: "#fff", border: "none", borderRadius: 7, fontFamily: "Syne, sans-serif", fontSize: ".9rem", fontWeight: 700, cursor: "pointer", letterSpacing: ".04em" }}>
+                  <button onClick={() => setSent(true)} style={{ padding: ".875rem", background: C.blue, color: "#fff", border: "none", borderRadius: 7, fontFamily: "Space Grotesk, sans-serif", fontSize: ".9rem", fontWeight: 700, cursor: "pointer", letterSpacing: ".04em" }}>
                     Send message →
                   </button>
-                  <p style={{ fontSize: ".75rem", color: C.muted, textAlign: "center" }}>No spam. Your information is used only to follow up on your inquiry.</p>
+                  <p style={{ fontSize: ".75rem", color: "#94a3b8", textAlign: "center" }}>No spam. Your information is used only to follow up on your inquiry.</p>
                 </div>
               )}
             </div>
@@ -505,7 +505,7 @@ function ContactPage() {
                   <div style={{ fontSize: "1.5rem", flexShrink: 0, marginTop: ".1rem" }}>{item.icon}</div>
                   <div>
                     <h3 style={{ fontSize: "1rem", fontWeight: 700, marginBottom: ".35rem" }}>{item.title}</h3>
-                    <p style={{ fontSize: ".875rem", color: C.muted, lineHeight: 1.65 }}>{item.desc}</p>
+                    <p style={{ fontSize: ".925rem", color: "#94a3b8", lineHeight: 1.7 }}>{item.desc}</p>
                   </div>
                 </div>
               ))}
@@ -524,8 +524,8 @@ function Footer({ navigate }) {
       <Wrap>
         <div style={{ display: "grid", gridTemplateColumns: "1.5fr 1fr 1fr 1fr", gap: "3rem", marginBottom: "3rem" }}>
           <div>
-            <img src={LOGO} alt="expandev" style={{ height: 22, marginBottom: "1rem" }} />
-            <p style={{ fontSize: ".85rem", color: C.muted, lineHeight: 1.7, maxWidth: 240 }}>Governed AI Software Development. Control, traceability, and human accountability for every line of AI-generated code.</p>
+            <img src={LOGO} alt="expandev" style={{ height: 32, marginBottom: "1rem" }} />
+            <p style={{ fontSize: ".9rem", color: "#94a3b8", lineHeight: 1.7, maxWidth: 240 }}>Governed AI Software Development. Control, traceability, and human accountability for every line of AI-generated code.</p>
           </div>
           {[
             { title: "Platform", links: [["platform", "Overview"], ["platform", "Context & FinOps"], ["platform", "Spec-Driven Requirements"], ["platform", "Architectural Compliance"], ["platform", "Code Provenance"]] },
@@ -533,16 +533,16 @@ function Footer({ navigate }) {
             { title: "Company", links: [["governance", "Governance"], ["pricing", "Pricing"], ["contact", "Contact"]] },
           ].map(col => (
             <div key={col.title}>
-              <p style={{ fontFamily: "Syne, sans-serif", fontSize: ".78rem", fontWeight: 700, letterSpacing: ".1em", textTransform: "uppercase", color: "rgba(200,215,255,.4)", marginBottom: "1rem" }}>{col.title}</p>
+              <p style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: ".78rem", fontWeight: 700, letterSpacing: ".1em", textTransform: "uppercase", color: "rgba(200,215,255,.55)", marginBottom: "1rem" }}>{col.title}</p>
               {col.links.map(([page, label]) => (
-                <button key={label} onClick={() => navigate(page)} style={{ display: "block", background: "none", border: "none", color: C.muted, fontSize: ".875rem", cursor: "pointer", padding: ".3rem 0", textAlign: "left", transition: "color .2s" }}>{label}</button>
+                <button key={label} onClick={() => navigate(page)} style={{ display: "block", background: "none", border: "none", color: "#94a3b8", fontSize: ".925rem", cursor: "pointer", padding: ".3rem 0", textAlign: "left", transition: "color .2s" }}>{label}</button>
               ))}
             </div>
           ))}
         </div>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", paddingTop: "2rem", borderTop: `1px solid ${C.border}` }}>
-          <p style={{ fontSize: ".8rem", color: C.muted }}>© 2026 expandev, Inc. All rights reserved.</p>
-          <p style={{ fontSize: ".8rem", color: C.muted }}>ISO 42001 · NIST AI RMF · EU AI Act · GAISD</p>
+          <p style={{ fontSize: ".8rem", color: "#94a3b8" }}>© 2026 expandev, Inc. All rights reserved.</p>
+          <p style={{ fontSize: ".8rem", color: "#94a3b8" }}>ISO 42001 · NIST AI RMF · EU AI Act · GAISD</p>
         </div>
       </Wrap>
     </footer>
