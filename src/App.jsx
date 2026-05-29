@@ -98,30 +98,43 @@ function HomePage({ navigate }) {
       {/* Hero */}
       <section style={{ minHeight: "100vh", display: "flex", alignItems: "center", padding: "8rem 0 5rem", position: "relative", overflow: "hidden" }}>
         <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px)", backgroundSize: "60px 60px", maskImage: "radial-gradient(ellipse 80% 70% at 50% 0%, black, transparent)" }} />
-        <div style={{ position: "absolute", top: "-20%", left: "-5%", width: "60%", height: "70%", background: "radial-gradient(ellipse,rgba(26,86,255,.15) 0%,transparent 65%)", filter: "blur(60px)", pointerEvents: "none" }} />
-        <div style={{ position: "absolute", top: "15%", right: 0, width: "40%", height: "55%", background: "radial-gradient(ellipse,rgba(0,212,255,.07) 0%,transparent 60%)", filter: "blur(80px)", pointerEvents: "none" }} />
+        <div style={{ position: "absolute", top: "-20%", left: "-5%", width: "50%", height: "70%", background: "radial-gradient(ellipse,rgba(26,86,255,.14) 0%,transparent 65%)", filter: "blur(60px)", pointerEvents: "none" }} />
         <Wrap style={{ position: "relative" }}>
-          <div style={{ display: "inline-flex", alignItems: "center", gap: ".5rem", padding: ".38rem 1rem", borderRadius: 100, border: `1px solid rgba(26,86,255,.4)`, background: "rgba(26,86,255,.1)", fontSize: ".75rem", fontWeight: 500, color: "rgba(200,215,255,.85)", marginBottom: "2rem" }}>
-            <span style={{ width: 6, height: 6, borderRadius: "50%", background: C.cyan, display: "inline-block" }} />
-            Aligned with ISO 42001 · NIST AI RMF · EU AI Act
-          </div>
-          <h1 style={{ fontSize: "clamp(2.8rem,6vw,4.5rem)", fontWeight: 800, lineHeight: 1.08, marginBottom: "1.5rem", letterSpacing: "-.025em" }}>
-            AI speed.<br />
-            <span style={{ fontStyle: "italic", background: "linear-gradient(135deg,#1a56ff,#00d4ff)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Engineering</span> quality.<br />
-            Auditable governance.
-          </h1>
-          <p style={{ fontSize: "1.1rem", color: "rgba(200,215,255,.65)", maxWidth: 540, marginBottom: "2.5rem", fontWeight: 300, lineHeight: 1.8 }}>
-            Enterprise-grade software, from briefing to release. expandev governs how AI builds your software — ensuring every line of code is traceable, compliant, and owned by humans.
-          </p>
-          <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
-            <Btn primary onClick={() => navigate("contact")}>Book a demo</Btn>
-            <Btn onClick={() => navigate("platform")}>See the platform →</Btn>
-          </div>
-          <div style={{ marginTop: "4rem", paddingTop: "2rem", borderTop: `1px solid ${C.border}` }}>
-            <p style={{ fontSize: ".72rem", color: C.muted, marginBottom: ".75rem", fontFamily: "Syne, sans-serif", letterSpacing: ".12em", textTransform: "uppercase" }}>Governance frameworks</p>
-            <div style={{ display: "flex", gap: ".6rem", flexWrap: "wrap" }}>
-              {["ISO / IEC 42001", "NIST AI RMF", "EU AI Act", "GAISD"].map(fw => (
-                <span key={fw} style={{ padding: ".3rem .8rem", border: `1px solid ${C.border}`, borderRadius: 4, fontSize: ".75rem", color: "rgba(200,215,255,.55)", fontFamily: "Syne, sans-serif", fontWeight: 500 }}>{fw}</span>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "4rem", alignItems: "center" }}>
+            {/* Left: copy */}
+            <div>
+              <div style={{ display: "inline-flex", alignItems: "center", gap: ".5rem", padding: ".38rem 1rem", borderRadius: 100, border: "1px solid rgba(26,86,255,.4)", background: "rgba(26,86,255,.1)", fontSize: ".72rem", fontWeight: 500, color: "rgba(200,215,255,.85)", marginBottom: "1.75rem" }}>
+                <span style={{ width: 6, height: 6, borderRadius: "50%", background: C.cyan, display: "inline-block" }} />
+                ISO 42001 · NIST AI RMF · EU AI Act
+              </div>
+              <h1 style={{ fontSize: "clamp(1.9rem,3vw,2.75rem)", fontWeight: 800, lineHeight: 1.12, marginBottom: "1.25rem", letterSpacing: "-.022em" }}>
+                AI speed.<br />
+                <span style={{ fontStyle: "italic", background: "linear-gradient(135deg,#1a56ff,#00d4ff)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Engineering</span> quality.<br />
+                Auditable governance.
+              </h1>
+              <p style={{ fontSize: "1rem", color: "rgba(200,215,255,.62)", marginBottom: "2rem", fontWeight: 300, lineHeight: 1.8 }}>
+                Enterprise-grade software, from briefing to release. expandev governs how AI builds your software — every line traceable, compliant, and owned by humans.
+              </p>
+              <div style={{ display: "flex", gap: ".875rem", flexWrap: "wrap" }}>
+                <Btn primary onClick={() => navigate("contact")}>Book a demo</Btn>
+                <Btn onClick={() => navigate("platform")}>See the platform →</Btn>
+              </div>
+            </div>
+            {/* Right: framework tags */}
+            <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+              {[
+                { label: "ISO / IEC 42001", sub: "AI Management System", color: C.blue },
+                { label: "NIST AI RMF", sub: "Risk Management Framework", color: C.cyan },
+                { label: "EU AI Act", sub: "European Regulation", color: C.purple },
+                { label: "GAISD", sub: "Governed AI Software Development", color: "#22c55e" },
+              ].map(fw => (
+                <div key={fw.label} style={{ background: C.surface, border: `1px solid ${C.border}`, borderLeft: `3px solid ${fw.color}`, borderRadius: 8, padding: "1rem 1.25rem", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                  <div>
+                    <p style={{ fontFamily: "Syne, sans-serif", fontWeight: 700, fontSize: ".95rem", marginBottom: ".2rem" }}>{fw.label}</p>
+                    <p style={{ fontSize: ".78rem", color: C.muted }}>{fw.sub}</p>
+                  </div>
+                  <span style={{ fontSize: ".7rem", color: fw.color, fontFamily: "Syne, sans-serif", fontWeight: 700, letterSpacing: ".08em" }}>ALIGNED</span>
+                </div>
               ))}
             </div>
           </div>
@@ -134,7 +147,7 @@ function HomePage({ navigate }) {
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "4rem", alignItems: "center" }}>
             <div>
               <Eyebrow>The Generative AI Paradox</Eyebrow>
-              <p style={{ fontFamily: "Syne, sans-serif", fontSize: "1.5rem", fontWeight: 700, lineHeight: 1.3, marginBottom: "1.25rem" }}>
+              <p style={{ fontFamily: "Syne, sans-serif", fontSize: "1.3rem", fontWeight: 700, lineHeight: 1.35, marginBottom: "1.25rem" }}>
                 <em style={{ color: C.muted, fontStyle: "italic" }}>Code is generated in seconds. Architectures emerge from prompts.</em>{" "}
                 <strong style={{ color: C.text }}>AI has changed how software is built — but not who is responsible for it.</strong>
               </p>
@@ -163,7 +176,7 @@ function HomePage({ navigate }) {
       <section style={{ padding: "6rem 0" }}>
         <Wrap>
           <div style={{ textAlign: "center", marginBottom: "3rem" }}>
-            <h2 style={{ fontSize: "clamp(1.8rem,4vw,2.8rem)", fontWeight: 800, letterSpacing: "-.02em", marginBottom: ".75rem" }}>
+            <h2 style={{ fontSize: "clamp(1.5rem,2.5vw,2.2rem)", fontWeight: 800, letterSpacing: "-.02em", marginBottom: ".75rem" }}>
               Speed without governance isn't productivity —<br />
               <em style={{ fontStyle: "italic", color: C.blue }}>it's compounding risk.</em>
             </h2>
@@ -190,7 +203,7 @@ function HomePage({ navigate }) {
         <Wrap>
           <div style={{ textAlign: "center", marginBottom: "4rem" }}>
             <Eyebrow>How it works</Eyebrow>
-            <h2 style={{ fontSize: "clamp(1.8rem,4vw,2.8rem)", fontWeight: 800, letterSpacing: "-.02em", marginBottom: ".75rem" }}>Four stages. One governed pipeline.</h2>
+            <h2 style={{ fontSize: "clamp(1.5rem,2.5vw,2.2rem)", fontWeight: 800, letterSpacing: "-.02em", marginBottom: ".75rem" }}>Four stages. One governed pipeline.</h2>
             <p style={{ color: "rgba(200,215,255,.6)", fontSize: "1rem", maxWidth: 520, margin: "0 auto" }}>From business intent to auditable source code — every step is structured, traced, and human-owned.</p>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: "1.5rem", position: "relative" }}>
@@ -217,7 +230,7 @@ function HomePage({ navigate }) {
       <section style={{ padding: "6rem 0" }}>
         <Wrap>
           <div style={{ background: `linear-gradient(135deg, rgba(26,86,255,.15), rgba(0,212,255,.08))`, border: `1px solid rgba(26,86,255,.25)`, borderRadius: 20, padding: "4rem", textAlign: "center" }}>
-            <h2 style={{ fontSize: "clamp(1.8rem,4vw,2.6rem)", fontWeight: 800, letterSpacing: "-.02em", marginBottom: "1rem" }}>Ready to govern your AI development?</h2>
+            <h2 style={{ fontSize: "clamp(1.5rem,2.3vw,2.1rem)", fontWeight: 800, letterSpacing: "-.02em", marginBottom: "1rem" }}>Ready to govern your AI development?</h2>
             <p style={{ color: "rgba(200,215,255,.6)", fontSize: "1rem", marginBottom: "2rem", maxWidth: 480, margin: "0 auto 2rem" }}>Join engineering teams building compliant, auditable software with expandev.</p>
             <div style={{ display: "flex", gap: "1rem", justifyContent: "center" }}>
               <Btn primary onClick={() => navigate("contact")}>Book a demo</Btn>
@@ -246,7 +259,7 @@ function PlatformPage({ navigate }) {
       <section style={{ background: C.surface, padding: "5rem 0 4rem" }}>
         <Wrap>
           <Eyebrow>Platform</Eyebrow>
-          <h1 style={{ fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 800, letterSpacing: "-.02em", marginBottom: "1rem", maxWidth: 700 }}>Six modules. Full governed SDLC.</h1>
+          <h1 style={{ fontSize: "clamp(1.6rem,2.5vw,2.4rem)", fontWeight: 800, letterSpacing: "-.02em", marginBottom: "1rem", maxWidth: 700 }}>Six modules. Full governed SDLC.</h1>
           <p style={{ fontSize: "1.05rem", color: "rgba(200,215,255,.6)", maxWidth: 600, fontWeight: 300, lineHeight: 1.75 }}>Every plan ships the complete governed software development lifecycle. Governance is never tier-gated — what changes between plans is DVU volume, not governance quality.</p>
         </Wrap>
       </section>
@@ -270,7 +283,7 @@ function PlatformPage({ navigate }) {
         <Wrap>
           <div style={{ textAlign: "center", marginBottom: "3rem" }}>
             <Eyebrow>Why expandev</Eyebrow>
-            <h2 style={{ fontSize: "clamp(1.8rem,4vw,2.6rem)", fontWeight: 800, letterSpacing: "-.02em" }}>AI can generate code.<br />Only governance can build software.</h2>
+            <h2 style={{ fontSize: "clamp(1.5rem,2.3vw,2.1rem)", fontWeight: 800, letterSpacing: "-.02em" }}>AI can generate code.<br />Only governance can build software.</h2>
           </div>
           <div style={{ background: C.bg, borderRadius: 12, overflow: "hidden", border: `1px solid ${C.border}` }}>
             <div style={{ display: "grid", gridTemplateColumns: "2fr 1.5fr 1.5fr", background: C.surface2 }}>
@@ -317,7 +330,7 @@ function GovernancePage() {
       <section style={{ background: C.surface, padding: "5rem 0 4rem" }}>
         <Wrap>
           <Eyebrow>Governance</Eyebrow>
-          <h1 style={{ fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 800, letterSpacing: "-.02em", marginBottom: "1rem", maxWidth: 700 }}>Aligned with the global AI governance movement.</h1>
+          <h1 style={{ fontSize: "clamp(1.6rem,2.5vw,2.4rem)", fontWeight: 800, letterSpacing: "-.02em", marginBottom: "1rem", maxWidth: 700 }}>Aligned with the global AI governance movement.</h1>
           <p style={{ fontSize: "1.05rem", color: "rgba(200,215,255,.6)", maxWidth: 580, fontWeight: 300, lineHeight: 1.75 }}>expandev implements the GAISD principles and natively aligns with the frameworks that define AI accountability across every major regulatory market.</p>
         </Wrap>
       </section>
@@ -351,7 +364,7 @@ function GovernancePage() {
         <Wrap>
           <div style={{ textAlign: "center", marginBottom: "3.5rem" }}>
             <Eyebrow>5 GAISD Principles</Eyebrow>
-            <h2 style={{ fontSize: "clamp(1.8rem,4vw,2.6rem)", fontWeight: 800, letterSpacing: "-.02em" }}>At expandev, AI executes —<br />humans govern.</h2>
+            <h2 style={{ fontSize: "clamp(1.5rem,2.3vw,2.1rem)", fontWeight: 800, letterSpacing: "-.02em" }}>At expandev, AI executes —<br />humans govern.</h2>
           </div>
           <div style={{ maxWidth: 780, margin: "0 auto" }}>
             {principles.map((p, i) => (
@@ -383,7 +396,7 @@ function PricingPage({ navigate }) {
       <section style={{ background: C.surface, padding: "5rem 0 4rem" }}>
         <Wrap>
           <Eyebrow>Pricing</Eyebrow>
-          <h1 style={{ fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 800, letterSpacing: "-.02em", marginBottom: "1rem", maxWidth: 640 }}>A fixed plan, plus exactly what you use.</h1>
+          <h1 style={{ fontSize: "clamp(1.6rem,2.5vw,2.4rem)", fontWeight: 800, letterSpacing: "-.02em", marginBottom: "1rem", maxWidth: 640 }}>A fixed plan, plus exactly what you use.</h1>
           <p style={{ fontSize: "1.05rem", color: "rgba(200,215,255,.6)", maxWidth: 580, fontWeight: 300, lineHeight: 1.75 }}>Every plan pairs a predictable monthly fee with a bundle of Dev Units (DVUs). Governance is never tier-gated — every plan ships the full governed SDLC.</p>
         </Wrap>
       </section>
@@ -443,7 +456,7 @@ function ContactPage() {
       <section style={{ background: C.surface, padding: "5rem 0 4rem" }}>
         <Wrap>
           <Eyebrow>Get in touch</Eyebrow>
-          <h1 style={{ fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 800, letterSpacing: "-.02em", marginBottom: "1rem", maxWidth: 640 }}>Ready to govern your AI development?</h1>
+          <h1 style={{ fontSize: "clamp(1.6rem,2.5vw,2.4rem)", fontWeight: 800, letterSpacing: "-.02em", marginBottom: "1rem", maxWidth: 640 }}>Ready to govern your AI development?</h1>
           <p style={{ fontSize: "1.05rem", color: "rgba(200,215,255,.6)", maxWidth: 540, fontWeight: 300, lineHeight: 1.75 }}>Tell us about your team and we'll find the right plan together. We typically respond within one business day.</p>
         </Wrap>
       </section>
